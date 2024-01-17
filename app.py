@@ -1,13 +1,13 @@
-from flask import Flask
+from fastapi import FastAPI
 import torch
-from pprint import pprint
-from omegaconf import OmegaConf
 from IPython.display import Audio, display
 
-app = Flask(__name__)
+app = FastAPI()
 
-pip install -r requirements.txt
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+@app.post("/tts")
+async def tts():
+    return {"message": "Hello World"}
